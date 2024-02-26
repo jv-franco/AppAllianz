@@ -1,5 +1,11 @@
 import { CreateBarber, FindBarber, FindBarbers } from "./Routes/Barber";
-import { CreateBooking, DeleteBooking } from "./Routes/Booking";
+import {
+  CreateBooking,
+  DeleteBooking,
+  EditBooking,
+  FindBookingByUser,
+  FindBookings,
+} from "./Routes/Booking";
 import { Login } from "./Routes/Login";
 import { CreateUser, FindAllUsers } from "./Routes/Register";
 import { CreateService, FindService, FindServices } from "./Routes/Service";
@@ -33,8 +39,10 @@ app.get("/services/:id", FindService);
 
 // Booking
 
+app.get("/bookings", FindBookings);
+app.get("/bookings/:userId", FindBookingByUser);
 app.post("/barbers/:barberId/booking", CreateBooking);
-app.put("/barbers/:barberId/booking/:bookingId", CreateBooking);
+app.put("/barbers/:barberId/booking/:bookingId", EditBooking);
 app.delete("/barbers/:barberId/booking/:bookingId", DeleteBooking);
 
 const PORT = process.env.PORT || 3333;
